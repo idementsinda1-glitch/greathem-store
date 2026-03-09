@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { CartProvider } from "../context/CartContext";
+import "./globals.css"; // Ajout de cette ligne pour éviter une autre erreur
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
             <main>{children}</main>
             <footer className="p-8 text-center text-gray-500 text-sm">
               © 2026 Greathem Lab. Tous droits réservés.
-            </body>
+            </footer>
           </div>
         </CartProvider>
       </body>
