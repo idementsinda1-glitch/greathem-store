@@ -1,60 +1,55 @@
 "use client";
-import { useCart } from "../context/CartContext";
-import { ShoppingCart, Check } from "lucide-react";
+import React from 'react';
+import { ShoppingCart, ShieldCheck, Zap } from "lucide-react";
 
-const PRODUITS = [
-  {
-    id: "ebook-1",
-    name: "Ebook : Le Guide du Succès Digital",
-    price: 5000,
-    description: "Apprenez à bâtir votre empire en ligne avec les meilleures stratégies 2026."
-  },
-  {
-    id: "consult-1",
-    name: "Consultation Stratégique",
-    price: 15000,
-    description: "Une heure de coaching intensif pour propulser votre projet Greathem Lab."
-  }
-];
-
-export default function Home() {
-  const { addToCart, cart } = useCart();
-
+export default function GlobalStore() {
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="text-center my-12">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Innover. Créer. Réussir.</h1>
-        <p className="text-lg text-gray-600">Découvrez nos ressources exclusives pour entrepreneurs.</p>
-      </div>
+    <div style={{ fontFamily: 'sans-serif', backgroundColor: '#f4f7f6', minHeight: '100vh', color: '#1a1a1a' }}>
+      {/* Hero Section */}
+      <section style={{ background: 'linear-gradient(135deg, #000 0%, #222 100%)', color: 'white', padding: '60px 20px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', letterSpacing: '-1px', marginBottom: '10px' }}>GREATHEM LAB</h1>
+        <p style={{ opacity: 0.8, fontSize: '1.1rem' }}>L'Excellence Digitale à votre portée</p>
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {PRODUITS.map((produit) => (
-          <div key={produit.id} className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <h2 className="text-xl font-bold mb-2">{produit.name}</h2>
-            <p className="text-gray-500 mb-4 text-sm">{produit.description}</p>
-            <div className="flex justify-between items-center">
-              <span className="text-2xl font-black text-black">{produit.price.toLocaleString()} FCFA</span>
-              <button 
-                onClick={() => addToCart({...produit, quantity: 1})}
-                className="bg-black text-white px-6 py-2 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-colors"
-              >
-                <ShoppingCart size={18} />
-                Ajouter
-              </button>
-            </div>
+      {/* Product Grid */}
+      <div style={{ maxWidth: '1000px', margin: '40px auto', padding: '0 20px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+        
+        {/* Produit 1 */}
+        <div style={{ backgroundColor: 'white', borderRadius: '20px', padding: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid #eee' }}>
+          <div style={{ backgroundColor: '#000', color: 'white', width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+            <Zap size={20} />
           </div>
-        ))}
-      </div>
-
-      {cart.length > 0 && (
-        <div className="mt-12 p-4 bg-green-50 border border-green-200 rounded-xl flex justify-between items-center">
-          <div className="flex items-center gap-2 text-green-700">
-            <Check size={20} />
-            <span>{cart.length} produit(s) dans votre panier</span>
+          <h2 style={{ fontSize: '1.4rem', marginBottom: '10px' }}>Ebook : Succès Digital</h2>
+          <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '20px' }}>La stratégie complète pour bâtir votre empire en ligne dès aujourd'hui.</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>5 000 FCFA</span>
+            <button style={{ backgroundColor: '#000', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer' }}>
+              Acheter
+            </button>
           </div>
-          <button className="font-bold text-green-800 underline">Voir le panier</button>
         </div>
-      )}
+
+        {/* Produit 2 */}
+        <div style={{ backgroundColor: 'white', borderRadius: '20px', padding: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid #eee' }}>
+          <div style={{ backgroundColor: '#000', color: 'white', width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+            <ShieldCheck size={20} />
+          </div>
+          <h2 style={{ fontSize: '1.4rem', marginBottom: '10px' }}>Consultation Privée</h2>
+          <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '20px' }}>Un accompagnement sur mesure pour vos projets Greathem Lab.</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>15 000 FCFA</span>
+            <button style={{ backgroundColor: '#000', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer' }}>
+              Réserver
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Footer */}
+      <footer style={{ textAlign: 'center', padding: '40px', color: '#999', fontSize: '0.8rem' }}>
+        © 2026 GREATHEM LAB. Tous droits réservés. Propriété exclusive.
+      </footer>
     </div>
   );
 }
